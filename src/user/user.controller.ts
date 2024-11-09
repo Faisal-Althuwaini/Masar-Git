@@ -85,6 +85,7 @@ export class UserController {
     @Param('id3') id3: number,
   ) {
     // delete - Deletes entities by entity id, ids or given conditions:
+    this.userService;
     this.userRepo.delete([id, id2, id3]);
 
     return 'Users Deleted Successfully';
