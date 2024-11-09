@@ -25,4 +25,34 @@ export class UserService {
 
     return { message: 'User created Successfully', user: user };
   }
+
+  deleteMulti(id, id2, id3): any {
+    const usersId = [id, id2, id3];
+    // delete - Deletes entities by entity id, ids or given conditions:
+    this.userRepo.delete(usersId);
+
+    return 'Users Deleted Successfully';
+  }
+
+  updateFullName(id, updatedFullName): any {
+    // delete - Deletes entities by entity id, ids or given conditions:
+    this.userRepo.update(id, { fullName: updatedFullName });
+    return 'User updated successfully';
+  }
+
+  // get user by id
+  async getUserById(id: number) {
+    const user = await this.userRepo.findOne({ where: { id: id } });
+
+    return { user: user };
+  }
+
+  // Delete user by id
+  async deleteUser(id: number) {
+    this.userRepo.delete(id);
+
+    return 'User Deleted Successfully';
+  }
+
+
 }
