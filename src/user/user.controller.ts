@@ -84,17 +84,13 @@ export class UserController {
     @Param('id2') id2: number,
     @Param('id3') id3: number,
   ) {
-    // delete - Deletes entities by entity id, ids or given conditions:
-    this.userService;
-    this.userRepo.delete([id, id2, id3]);
-
-    return 'Users Deleted Successfully';
+    return this.userService.deleteMulti(id, id2, id3);
   }
 
+  // update userFullName by id
   @Patch(':id')
-  update(@Param('id') id: string, @Query() updatedFullName: string) {
-    this.userRepo.update(id, { fullName: updatedFullName });
-    return 'User updated successfully';
+  update(@Param('id') id: string, @Query('fullname') updatedFullName: string) {
+    return this.userService.updateFullName(id, updatedFullName);
   }
 }
 
