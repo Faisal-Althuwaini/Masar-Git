@@ -25,6 +25,7 @@ export class UserController {
   // repo global variable - (DB)
   userRepo = this.dataSource.getRepository(User);
 
+  // Mohammed todo :
   // Create User
   @Post('')
   async create(@Body() body) {
@@ -53,6 +54,9 @@ export class UserController {
     return { users: users };
   }
 
+  // End of Mohammed todo :
+
+  // Mohannad todo :
   // Get user by id
   @Get(':id')
   async findUser(@Param('id') id: number) {
@@ -70,7 +74,9 @@ export class UserController {
 
     return 'User Deleted Successfully';
   }
+  // End Mohannad todo :
 
+  // Faisal todo :
   // todo : delete array of users by id
   @Delete(':id/:id2/:id3')
   async DeleteUsers(
@@ -90,3 +96,5 @@ export class UserController {
     return 'User updated successfully';
   }
 }
+
+// End of Faisal todo :
