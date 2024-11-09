@@ -29,21 +29,7 @@ export class UserController {
   // Create User
   @Post('')
   async create(@Body() body) {
-    const user = new User();
-    const { fullName, age } = body;
-
-    if (!fullName || !age) {
-      throw new HttpException(
-        'Full name and age are required',
-        HttpStatus.BAD_REQUEST,
-      );
-    }
-    user.fullName = fullName;
-    user.age = age;
-
-    await this.userRepo.save(user);
-
-    return { message: 'User created Successfully', user: user };
+    return this.userService.create(body);
   }
 
   // Get all users
